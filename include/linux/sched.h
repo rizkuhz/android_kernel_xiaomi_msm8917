@@ -3376,9 +3376,9 @@ static inline unsigned long map_util_freq(unsigned long util,
 #endif /* CONFIG_CPU_FREQ */
 
 #ifdef CONFIG_DYNAMIC_STUNE_BOOST
-int do_stune_boost(char *st_name, int boost);
-int do_stune_sched_boost(char *st_name);
-int reset_stune_boost(char *st_name);
+int do_stune_boost(char *st_name, int boost, int *slot);
+int do_stune_sched_boost(char *st_name, int *slot);
+int reset_stune_boost(char *st_name, int slot);
 
 #else /* !CONFIG_DYNAMIC_STUNE_BOOST */
 static inline int do_stune_boost(char *st_name, int boost, int *slot)

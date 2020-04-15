@@ -118,7 +118,10 @@ struct compat_fastrpc_ioctl_control {
 		struct compat_fastrpc_ctrl_kalloc kalloc;
 	};
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 static int compat_get_fastrpc_ioctl_invoke(
 			struct compat_fastrpc_ioctl_invoke_fd __user *inv32,
 			struct fastrpc_ioctl_invoke_fd __user **inva,

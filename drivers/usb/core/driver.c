@@ -501,6 +501,10 @@ int usb_driver_claim_interface(struct usb_driver *driver,
 	struct device *dev;
 	struct usb_device *udev;
 	int retval = 0;
+<<<<<<< HEAD
+=======
+	int lpm_disable_error;
+>>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 
 	if (!iface)
 		return -ENODEV;
@@ -517,6 +521,17 @@ int usb_driver_claim_interface(struct usb_driver *driver,
 
 	iface->condition = USB_INTERFACE_BOUND;
 
+<<<<<<< HEAD
+=======
+	/* Disable LPM until this driver is bound. */
+	lpm_disable_error = usb_unlocked_disable_lpm(udev);
+	if (lpm_disable_error && driver->disable_hub_initiated_lpm) {
+		dev_err(&iface->dev, "%s Failed to disable LPM for driver %s\n.",
+				__func__, driver->name);
+		return -ENOMEM;
+	}
+
+>>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 	/* Claimed interfaces are initially inactive (suspended) and
 	 * runtime-PM-enabled, but only if the driver has autosuspend
 	 * support.  Otherwise they are marked active, to prevent the
@@ -535,20 +550,9 @@ int usb_driver_claim_interface(struct usb_driver *driver,
 	if (device_is_registered(dev))
 		retval = device_bind_driver(dev);
 
-	if (retval) {
-		dev->driver = NULL;
-		usb_set_intfdata(iface, NULL);
-		iface->needs_remote_wakeup = 0;
-		iface->condition = USB_INTERFACE_UNBOUND;
-
-		/*
-		 * Unbound interfaces are always runtime-PM-disabled
-		 * and runtime-PM-suspended
-		 */
-		if (driver->supports_autosuspend)
-			pm_runtime_disable(dev);
-		pm_runtime_set_suspended(dev);
-	}
+	/* Attempt to re-enable USB3 LPM, if the disable was successful. */
+	if (!lpm_disable_error)
+		usb_unlocked_enable_lpm(udev);
 
 	return retval;
 }

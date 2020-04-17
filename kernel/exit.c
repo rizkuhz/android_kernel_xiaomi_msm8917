@@ -53,8 +53,11 @@
 #include <linux/oom.h>
 #include <linux/writeback.h>
 #include <linux/shm.h>
+<<<<<<< HEAD
 #include <linux/kcov.h>
 #include <linux/cpufreq.h>
+=======
+>>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 
 #include <asm/uaccess.h>
 #include <asm/unistd.h>
@@ -686,7 +689,6 @@ void do_exit(long code)
 	TASKS_RCU(int tasks_rcu_i);
 
 	profile_task_exit(tsk);
-	kcov_task_exit(tsk);
 
 	WARN_ON(blk_needs_flush_plug(tsk));
 

@@ -1123,13 +1123,7 @@ static int bmi160_report_accel_data(struct iio_dev *indio_dev,
 #endif
 
 	store_acc_boot_sample(acc.x, acc.y, acc.z);
-<<<<<<< HEAD
 	iio_push_to_buffers(indio_dev, buf_16);
-=======
-	mutex_lock(&indio_dev->mlock);
-	iio_push_to_buffers(indio_dev, buf_16);
-	mutex_unlock(&indio_dev->mlock);
->>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 
 	return 0;
 }
@@ -1148,13 +1142,7 @@ static int bmi160_report_gyro_data(struct iio_dev *indio_dev,
 #endif
 
 	store_gyro_boot_sample(gyro.x, gyro.y, gyro.z);
-<<<<<<< HEAD
 	iio_push_to_buffers(indio_dev, buf_16);
-=======
-	mutex_lock(&indio_dev->mlock);
-	iio_push_to_buffers(indio_dev, buf_16);
-	mutex_unlock(&indio_dev->mlock);
->>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8
 
 	return 0;
 }

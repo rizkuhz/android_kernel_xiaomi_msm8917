@@ -2363,13 +2363,7 @@ composite_resume(struct usb_gadget *gadget)
 				f->func_wakeup_pending = 0;
 			}
 
-			/*
-			 * Call function resume irrespective of the speed.
-			 * Individual function needs to retain the USB3 Function
-			 * suspend state through out the Device suspend entry
-			 * and exit process.
-			 */
-			if (f->resume)
+			if (gadget->speed != USB_SPEED_SUPER && f->resume)
 				f->resume(f);
 		}
 

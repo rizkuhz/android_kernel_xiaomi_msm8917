@@ -2880,7 +2880,6 @@ __acquires(udc->lock)
 					default:
 						break;
 					}
-					break;
 				default:
 					goto delegate;
 				}

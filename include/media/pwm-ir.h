@@ -1,10 +1,5 @@
-<<<<<<< HEAD:include/media/pwm-ir.h
 /* Copyright (C) 2013 by Xiang Xiao <xiaoxiang@xiaomi.com>
  * Copyright (C) 2018 XiaoMi, Inc.
-=======
-/*
- * Copyright (c) 2019, The Linux Foundation. All rights reserved.
->>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8:arch/arm/boot/dts/qcom/mdm9207c-mtp.dts
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -16,7 +11,6 @@
  * GNU General Public License for more details.
  */
 
-<<<<<<< HEAD:include/media/pwm-ir.h
 #ifndef __PWM_IR_H__
 #define __PWM_IR_H__
 
@@ -30,15 +24,3 @@ struct pwm_ir_data {
 };
 
 #endif
-=======
-/dts-v1/;
-
-#include "mdm9607-mtp.dtsi"
-#include "mdm9207c.dtsi"
-
-/ {
-	model = "Qualcomm Technologies, Inc. MDM 9207c MTP";
-	compatible = "qcom,mdm9607-mtp", "qcom,mdm9607", "qcom,mtp";
-	qcom,board-id = <0x20008 0>;
-};
->>>>>>> db1ee2b7f7fa7afa46758cb4a30edbc1a9a7b5c8:arch/arm/boot/dts/qcom/mdm9207c-mtp.dts
